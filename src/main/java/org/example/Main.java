@@ -22,9 +22,9 @@ public class Main {
             String optionString = getInput.nextLine();
             int option = Integer.parseInt(optionString);
 
-            if (option == 6) { // Check if the input matches the desired input (case-insensitive)
+            if (option == 6) {
                 System.out.println("Exiting system...");
-                break; // Exit the loop
+                break;
             }
 
             switch (option) {
@@ -62,9 +62,6 @@ public class Main {
                     break;
             }
         }
-        //System.out.println(pizzas.isEmpty());
-        //System.out.println(quantities.isEmpty());
-
     }
 
     public static String viewInventory(HashMap<String, Integer> products) {
