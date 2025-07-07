@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         HashMap<String, Integer> products = new HashMap<>();
 
-        Scanner getInput = new Scanner (System.in);
+        Scanner getInput = new Scanner(System.in);
 
         while (true) {
             System.out.println("--- Grocery Inventory Menu ---");
@@ -22,12 +22,12 @@ public class Main {
             String optionString = getInput.nextLine();
             int option = Integer.parseInt(optionString);
 
-            if ( option == 6 ) { // Check if the input matches the desired input (case-insensitive)
+            if (option == 6) { // Check if the input matches the desired input (case-insensitive)
                 System.out.println("Exiting system...");
                 break; // Exit the loop
             }
 
-            switch(option){
+            switch (option) {
                 case 1: // View Inventory
                     viewInventory(products);
                     break;
@@ -42,7 +42,9 @@ public class Main {
                     System.out.print("\n");
                     break;
                 case 3: // Check Product
-
+                    System.out.print("Enter product name to check: ");
+                    productName = getInput.nextLine();
+                    checkProduct(products,productName);
                     break;
                 case 4: // Update Stock
                     System.out.print("Enter product name to update: ");
@@ -54,6 +56,9 @@ public class Main {
                     System.out.print("\n");
                     break;
                 case 5: // Remove Product
+                    System.out.print("Enter product name to remove: ");
+                    productName = getInput.nextLine();
+                    removeProduct(products,productName);
                     break;
             }
         }
@@ -61,34 +66,53 @@ public class Main {
         //System.out.println(quantities.isEmpty());
 
     }
-    public static void viewInventory(HashMap<String, Integer> products){
+
+    public static void viewInventory(HashMap<String, Integer> products) {
         System.out.println("Current Inventory: ");
-        products.forEach((key, value) -> System.out.println(key +" - "+ value +" pcs"));
+        products.forEach((key, value) -> System.out.println(key + " - " + value + " pcs"));
     }
-    public static String addProduct(HashMap<String, Integer> products, String productName, int quantity)
-    {
-        if (quantity < 0){
-            System.out.println("Quantity cannot be negative.");
-        }else if (products.containsKey(productName)) {
+
+    public static String addProduct(HashMap<String, Integer> products, String productName, int quantity) {
+        if (quantity <= 0) {
+            System.out.println("Quantity should be positive.");
+        } else if (products.containsKey(productName)) {
             System.out.println("Product already exists, please use update option.");
-        }
-        else{
+        } else {
             products.put(productName, quantity);
             System.out.println("Product Added!");
         }
         return "Product Added!";
     }
-    public static String updateProduct (HashMap<String, Integer> products, String productName, int quantity){
-        if (quantity < 0){
-            System.out.println("Quantity cannot be negative.");
-        }else if (!products.containsKey(productName)) {
+
+    public static String updateProduct(HashMap<String, Integer> products, String productName, int quantity) {
+        if (quantity <= 0) {
+            System.out.println("Quantity should be positive.");
+        } else if (!products.containsKey(productName)) {
             System.out.println("Product does not exist.");
-        }
-        else{
+        } else {
             products.replace(productName, quantity);
             System.out.println("Product Updated!");
         }
 
         return "Product Updated!";
+    }
+
+    public static String removeProduct(HashMap<String, Integer> products, String productName) {
+        if (!products.containsKey(productName)) {
+            System.out.println("Product does not exist.");
+        } else {
+            products.remove(productName);
+            System.out.println("Product removed.");
+        }
+        return "Product removed.";
+    }
+
+    public static String checkProduct(HashMap<String, Integer> products, String productName) {
+        if (products.containsKey(productName)) {
+            System.out.println(productName + " is in stock: "+products.get(productName));
+        } else {
+            System.out.println("Product is not in stock.");
+        }
+        return "Product is in stock.";
     }
 }
