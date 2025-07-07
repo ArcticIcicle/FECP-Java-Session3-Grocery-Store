@@ -67,9 +67,10 @@ public class Main {
 
     }
 
-    public static void viewInventory(HashMap<String, Integer> products) {
+    public static String viewInventory(HashMap<String, Integer> products) {
         System.out.println("Current Inventory: ");
         products.forEach((key, value) -> System.out.println(key + " - " + value + " pcs"));
+        return "Showing Inventory";
     }
 
     public static String addProduct(HashMap<String, Integer> products, String productName, int quantity) {
