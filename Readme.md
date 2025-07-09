@@ -1,4 +1,4 @@
-# Lab 1 Part 1: Grocery Store Inventory System
+# Lab 1: Grocery Store Inventory System
 
 Submitted by: Christian Choa <br/>
 Date: July 7, 2025
