@@ -73,44 +73,52 @@ public class Main {
     public static String addProduct(HashMap<String, Integer> products, String productName, int quantity) {
         if (quantity <= 0) {
             System.out.println("Quantity should be positive.");
+            return "Quantity should be positive.";
         } else if (products.containsKey(productName)) {
             System.out.println("Product already exists, please use update option.");
+            return "Product already exists, please use update option.";
         } else {
             products.put(productName, quantity);
             System.out.println("Product Added!");
+            return "Product Added!";
         }
-        return "Product Added!";
+
     }
 
     public static String updateProduct(HashMap<String, Integer> products, String productName, int quantity) {
         if (quantity <= 0) {
             System.out.println("Quantity should be positive.");
+            return "Quantity should be positive.";
         } else if (!products.containsKey(productName)) {
             System.out.println("Product does not exist.");
+            return "Product does not exist.";
         } else {
             products.replace(productName, quantity);
             System.out.println("Product Updated!");
+            return "Product Updated!";
         }
-
-        return "Product Updated!";
     }
 
     public static String removeProduct(HashMap<String, Integer> products, String productName) {
         if (!products.containsKey(productName)) {
             System.out.println("Product does not exist.");
+            return "Product does not exist.";
         } else {
             products.remove(productName);
             System.out.println("Product removed.");
+            return "Product removed.";
         }
-        return "Product removed.";
+
     }
 
     public static String checkProduct(HashMap<String, Integer> products, String productName) {
         if (products.containsKey(productName)) {
             System.out.println(productName + " is in stock: "+products.get(productName));
+            return "Product is in stock.";
         } else {
             System.out.println("Product is not in stock.");
+            return "Product is not in stock.";
         }
-        return "Product is in stock.";
+
     }
 }

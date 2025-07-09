@@ -19,6 +19,9 @@ Date: July 7, 2025
 ### Exiting:
 ![Screenshot of output](exit.png)
 
+## Unit Testing and Test Case Coverage:
+![Screenshot of output](unitTesting.png)
+
 
 
 
